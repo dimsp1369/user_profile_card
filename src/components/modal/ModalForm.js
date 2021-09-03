@@ -46,7 +46,7 @@ const ModalForm = (props) => {
     return (
         <Modal>
             <div className="modal__imgBg">
-                {name.length <= 0 ? <img src={blankAva} alt="" className="modal__img"/> :
+                {name.length <= 0 ? <img src={blankAva} alt="" className="modal__imgBlank"/> :
                     <Avatar color="#b67d94" name={name} round="50%" size="223" className="modal__img"/>}
             </div>
             <div className="modal__body">

@@ -55,6 +55,15 @@ input {
     font-family: 'DM Serif Display', serif;
   }
 
+  &__imgBlank {
+    position: absolute;
+    width: 223px;
+    height: 223px;
+    left: 89px;
+    bottom: 88px;
+    border-radius: 50%;
+  }
+
   &__body {
     position: absolute;
     width: 550px;
