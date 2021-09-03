@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
                 isUpdate: action.payload.updateBool
             }
         case CREATE_PROFILE:
-            newUsers.unshift(action.payload)
+            newUsers.push(action.payload)
             return {...state, users: newUsers, currentUser: {}, isFormOpen: false}
         case UPDATE_PROFILE:
             return {
