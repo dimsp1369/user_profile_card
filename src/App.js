@@ -28,12 +28,12 @@ const App = (props) => {
 
     return (
         <>
+            <AddBtn/>
             <div className="wrapper">
                 {currentCards.map((user, index) => <UserProfileCard key={uuidv4()} initialValue={user}
                                                                     index={index}/>)}
-                <AddBtn/>
-                {props.isFormOpen && <ModalWrapper/>}
             </div>
+            {props.isFormOpen && <ModalWrapper/>}
             <Pagination cardPerPage={cardPerPage} paginate={paginate}/>
         </>
     );

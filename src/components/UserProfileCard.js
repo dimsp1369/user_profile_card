@@ -23,17 +23,19 @@ const UserProfileCard = (props) => {
     const addressZip = get(props, 'initialValue.address.zipcode', '')
     return (
         <div className="card">
-            <img src={Edit} className="card__edit" onClick={() => dispatch(openForm(true, true, props.initialValue))} alt='edit'/>
             <div className="card__imgBg">
-                {image.length <= 0 ? <Avatar color="#b67d94" name={name} round="50%" size="145" className="card__avatar"/> :
+                {image.length <= 0 ? <Avatar color="#b67d94" name={name} round="50%" className="card__avatar"/> :
                     <img src={image} alt="userPhoto" className="card__img"/>}
             </div>
             <div className="card__body">
-                <div className="card__name">{name}</div>
+                <div className="card__name">
+                    {name}
+                    <img src={Edit} className="card__edit"
+                         onClick={() => dispatch(openForm(true, true, props.initialValue))}
+                         alt='edit'/></div>
                 <div className="card__contacts">
                     <div className="card__email">
                         <img src={eMail} alt=""/>
-
                         <h4>{email}</h4>
                     </div>
                     <div className="card__address">

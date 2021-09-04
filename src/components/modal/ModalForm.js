@@ -45,55 +45,59 @@ const ModalForm = (props) => {
 
     return (
         <Modal>
-            <div className="modal__imgBg">
-                {name.length <= 0 ? <img src={blankAva} alt="" className="modal__imgBlank"/> :
-                    <Avatar color="#b67d94" name={name} round="50%" size="223" className="modal__img"/>}
-            </div>
-            <div className="modal__body">
-                <input className="modal__name" type="text" placeholder="name" value={name}
-                       onChange={(e) => setName(e.target.value)}/>
-                <div className="modal__contacts">
-                    <div className="modal__email">
-                        <img src={eMail} alt=""/>
-                        <input type="text" placeholder="email" value={email}
-                               onChange={e => setEmail(e.target.value)}/>
+            <div className="profileForm">
+                <div className="profileForm__imgBg">
+                    {name.length <= 0 ? <img src={blankAva} alt="" className="profileForm__imgBlank"/> :
+                        <Avatar color="#b67d94" name={name} round="50%" className="profileForm__img"/>}
+                </div>
+                <div className="profileForm__body">
+                    <input className="profileForm__name" type="text" placeholder="name" value={name}
+                           onChange={(e) => setName(e.target.value)}/>
+                    <div className="profileForm__contacts">
+                        <div className="profileForm__email">
+                            <img src={eMail} alt=""/>
+                            <input type="text" placeholder="email" value={email}
+                                   onChange={e => setEmail(e.target.value)}/>
+                        </div>
+                        <div className="profileForm__address">
+                            <img src={contact} alt=""/>
+                            <div>
+                            <input type="text" placeholder="address line" defaultValue={street}
+                                   onChange={e => setStreet(e.target.value)}/>
+                            <input type="text" placeholder="apt/suit/..." defaultValue={suite}
+                                   onChange={e => setSuite(e.target.value)}/>
+                            <input type="text" placeholder="city" defaultValue={city}
+                                   onChange={e => setCity(e.target.value)}/>
+                            <input type="text" placeholder="zip" defaultValue={zip}
+                                   onChange={e => setZip(e.target.value)}/>
+                            </div>
+                        </div>
+                        <div className="profileForm__phone">
+                            <img src={calls} alt=""/>
+                            <input type="text" placeholder="phone" defaultValue={phone}
+                                   onChange={e => setPhone(e.target.value)}/>
+                        </div>
+                        <div className="profileForm__website">
+                            <img src={webSite} alt=""/>
+                            <input type="text" placeholder="website" defaultValue={website}
+                                   onChange={e => setWeb(e.target.value)}/>
+                        </div>
                     </div>
-                    <div className="modal__address">
-                        <img src={contact} alt=""/>
-                        <input type="text" placeholder="address line" defaultValue={street}
-                               onChange={e => setStreet(e.target.value)}/>
-                        <input type="text" placeholder="apt/suit/..." defaultValue={suite}
-                               onChange={e => setSuite(e.target.value)}/>
-                        <input type="text" placeholder="city" defaultValue={city}
-                               onChange={e => setCity(e.target.value)}/>
-                        <input type="text" placeholder="zip" defaultValue={zip}
-                               onChange={e => setZip(e.target.value)}/>
-                    </div>
-                    <div className="modal__phone">
-                        <img src={calls} alt=""/>
-                        <input type="text" placeholder="phone" defaultValue={phone}
-                               onChange={e => setPhone(e.target.value)}/>
-                    </div>
-                    <div className="modal__website">
-                        <img src={webSite} alt=""/>
-                        <input type="text" placeholder="website" defaultValue={website}
-                               onChange={e => setWeb(e.target.value)}/>
+                    <div className="profileForm__companyInfo">
+                        <img src={Logo} alt="Logo"/>
+                        <div className="profileForm__companyTitle">
+                            <input type="text" placeholder="company Name" defaultValue={companyName}
+                                   onChange={e => setCompanyName(e.target.value)}/>
+                            <input type="text" placeholder="company phrase" defaultValue={companyPhrase}
+                                   onChange={e => setCompanyPhrase(e.target.value)}/>
+                        </div>
+                        <button className="profileForm__Btn" onClick={() => {
+                            !props.isUpdate ? dispatch(createProfile(data)) : dispatch(updateProfile(data, id))
+                        }}>Ok
+                        </button>
                     </div>
                 </div>
-                <div className="modal__companyInfo">
-                    <img src={Logo} alt="Logo"/>
-                    <div className="modal__companyTitle">
-                        <input type="text" placeholder="company Name" defaultValue={companyName}
-                               onChange={e => setCompanyName(e.target.value)}/>
-                        <input type="text" placeholder="company phrase" defaultValue={companyPhrase}
-                               onChange={e => setCompanyPhrase(e.target.value)}/>
-                    </div>
-                </div>
             </div>
-            <button className="modal__Btn" onClick={() => {
-                !props.isUpdate ? dispatch(createProfile(data)) : dispatch(updateProfile(data, id))
-            }}>Done
-            </button>
         </Modal>
     );
 };

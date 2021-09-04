@@ -11,23 +11,19 @@ $radius: 10px;
 $basicHeight: 260px;
 $basicWidth: 640px;
 
-
 .wrapper {
-
-  margin: 2rem;
+  margin: 40px;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax($basicWidth, $basicWidth));
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, max(640px));
   justify-content: center;
 }
 
 .card {
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
-  border-radius: $radius;
-  width: $basicWidth;
-  height: $basicHeight;
+  border-radius: 10px;
+  min-width: $basicWidth;
   display: flex;
-  position: relative;
+  box-shadow: 0 0 10px 5px lightgray;
 
   &__imgBg {
     width: $basicHeight;
@@ -37,103 +33,70 @@ $basicWidth: 640px;
     border-top-left-radius: $radius;
     object-fit: cover;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__img {
-    position: absolute;
     width: 145px;
     height: 145px;
-    left: 58px;
-    bottom: 57px;
   }
 
   &__avatar {
-    position: absolute;
-    left: 29px;
-    bottom: 28px;
     font-family: 'DM Serif Display', serif;
   }
 
   &__body {
-    position: absolute;
-    width: 357px;
-    height: 208px;
-    left: 285px;
-    top: 26px;
+    margin: 20px 15px;
+    flex-grow: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
   }
 
   &__name {
     font-family: 'DM Serif Display', serif;
-    font-size: 25.9481px;
+    font-size: 26px;
     line-height: 30px;
-
-    width: 357px;
-    height: 30px;
-    left: 285px;
-    top: 26px;
   }
 
   &__contacts {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 357px;
-    height: 103px;
-    left: 285px;
-    top: 70px;
-
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-    line-height: 18px;
     color: #374A59;
-    position: static;
-    gap: 15px;
-    padding-top: 15px;
+
   }
 
   &__contacts img {
-    padding-right: 5px;
-    width: 22px;
-    height: 18px;
+    width: 18px;
+    height: 16px;
+    margin-right: 10px;
+  }
+
+  &__contacts div {
+    display: inline-flex;
+    margin-top: 10px;
   }
 
   &__email {
-    width: 340px;
-    height: 19px;
-    display: inline-flex;
   }
 
-
   &__address {
-    width: 340px;
-    height: 19px;
-    top: 27px;
-    display: inline-flex;
   }
 
   &__phone {
-    width: 340px;
-    height: 19px;
-    top: 56px;
-    display: inline-flex;
   }
 
   &__website {
-    display: inline-flex;
-    width: 340px;
-    height: 19px;
-    top: 84px;
     color: #007AE9;
   }
 
   &__companyInfo {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    position: absolute;
-    width: 300px;
-    height: 30px;
-    top: 180px;
+    margin-top: 40px;
   }
 
   &__companyInfo img {
@@ -144,34 +107,34 @@ $basicWidth: 640px;
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
     line-height: 18px;
-    color: #374A59;
-    position: static;
-
-    left: 58px;
   }
 
   &__edit {
-    position: absolute;
+    position: relative;
     width: 25px;
     height: 25px;
-    left: 600px;
-    top: 10px;
+    left: 20px;
     cursor: pointer;
     order: 1;
   }
 }
 
+
+.formWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 .form {
-  //box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
   background: #f1f1f1;
   border-radius: $radius;
-  width: 640px;
-  height: 260px;
+  width: 340px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
 
   &__center {
@@ -203,12 +166,12 @@ $basicWidth: 640px;
     margin-right: 10px;
     font-family: 'Open Sans', sans-serif;
     font-size: 30px;
+    font-weight: bold;
   }
 
   &__numbers:hover {
     position: relative;
     bottom: 10px;
-    //font-size: 50px;
   }
 
 }
@@ -283,4 +246,28 @@ $basicWidth: 640px;
   87.5% {
     box-shadow: 0em -2.6em 0em 0em rgba(63, 112, 228, 0.2), 1.8em -1.8em 0 0em rgba(63, 112, 228, 0.2), 2.5em 0em 0 0em rgba(63, 112, 228, 0.2), 1.75em 1.75em 0 0em rgba(63, 112, 228, 0.2), 0em 2.5em 0 0em rgba(63, 112, 228, 0.2), -1.8em 1.8em 0 0em rgba(63, 112, 228, 0.5), -2.6em 0em 0 0em rgba(63, 112, 228, 0.7), -1.8em -1.8em 0 0em #3f70e4;
   }
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    flex-direction: column;
+    //text-align: center;
+    min-width: $basicHeight;
+
+    &__imgBg {
+      width: 100%;
+      height: 150px;
+      border-top-right-radius: $radius;
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: 0;
+    }
+  }
+  .form {
+    width: $basicHeight;
+  }
+
 }

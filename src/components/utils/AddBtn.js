@@ -6,8 +6,10 @@ import {useDispatch} from "react-redux";
 const AddBtn = () => {
     const dispatch = useDispatch()
     return (
-        <div onClick={() => dispatch(openForm(true))} className="form">
-            <img src={Add} className="form__center" alt=""/>
+        <div className="formWrapper">
+            <div onClick={() => dispatch(openForm(true))} className="form">
+                <img src={Add} className="form__center" alt=""/>
+            </div>
         </div>
     );
 };

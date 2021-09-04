@@ -1,14 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 $radius: 16px;
 
 input {
   padding: 5px;
-  font-size: medium;
   font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
   color: #374A59;
   border-radius: 5px;
+  width: 200px;
 }
 
 .modal {
@@ -25,15 +32,19 @@ input {
   opacity: 0;
   transition: 0.3s;
 
+
   &__content {
-    border-radius: $radius;
-    background-color: white;
-    width: 990px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    display: grid;
+    justify-content: center;
   }
+}
+
+.profileForm {
+  min-width: 990px;
+  border-radius: $radius;
+  background-color: white;
+  box-shadow: 0 0 10px 5px lightgray;
+  display: flex;
 
   &__imgBg {
     width: 400px;
@@ -42,78 +53,54 @@ input {
     border-bottom-left-radius: $radius;
     border-top-left-radius: $radius;
     object-fit: cover;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__img {
-    position: absolute;
-    width: 223px;
-    height: 223px;
-    left: 45px;
-    bottom: 44px;
     border-radius: 50%;
     font-family: 'DM Serif Display', serif;
   }
 
   &__imgBlank {
-    position: absolute;
+    border-radius: 50%;
     width: 223px;
     height: 223px;
-    left: 89px;
-    bottom: 88px;
-    border-radius: 50%;
   }
 
   &__body {
-    position: absolute;
-    width: 550px;
-    height: 321px;
-    left: 440px;
-    top: 40px;
+    margin: 20px 15px;
+    flex-grow: 1;
   }
 
   &__name {
-    width: 515px;
-    height: 46px;
-    left: 440px;
-    top: 40px;
+    width: 530px;
     margin-bottom: 10px;
   }
 
   &__contacts {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 550px;
-    height: 159px;
-    left: 440px;
-    top: 109px;
-
-    position: static;
-    gap: 15px;
+    flex-grow: 1;
   }
 
   &__contacts img {
-    padding-right: 5px;
+    margin-right: 5px;
     width: 30px;
     height: 27px;
   }
 
-  &__email {
-    width: 515px;
-    height: 29px;
-    left: 0;
-    top: 0;
+  &__contacts div {
     display: inline-flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  &__email {
   }
 
   &__address {
-    display: inline-flex;
-    flex-direction: row;
-    width: 515px;
-    height: 29px;
-    left: 0;
-    top: 42px;
   }
 
   &__address input {
@@ -122,27 +109,16 @@ input {
   }
 
   &__phone {
-    display: inline-flex;
-    width: 515px;
-    height: 29px;
-    top: 66px;
   }
 
   &__website {
-    display: inline-flex;
-    width: 515px;
-    height: 29px;
-    top: 130px;
   }
 
   &__companyInfo {
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: absolute;
-    width: 408px;
-    height: 86px;
-    top: 240px
+    margin-top: 40px;
   }
 
   &__companyInfo img {
@@ -152,9 +128,6 @@ input {
   }
 
   &__companyTitle {
-    width: 250px;
-    height: 46px;
-    left: 90px;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
@@ -162,27 +135,72 @@ input {
   }
 
   &__Btn {
-    position: absolute;
     width: 60px;
     height: 60px;
-    border: 1px grey solid;
+    border: none;
     border-radius: 45%;
-    left: 880px;
-    top: 300px;
-    text-align: center;
+    box-shadow: 0 0 10px 5px lightgray;
+    margin-left: 150px;
+
     font-weight: bold;
-    background-color: #f2f3f1;
-    font-family: 'Open Sans', sans-serif;
+    font-family: inherit;
+    font-size: 18px;
   }
 
   &__Btn:hover {
-    background-color: #afadad;
+    background-color: #c2e88c;
   }
 }
 
 .modal.active {
   opacity: 1;
   pointer-events: all;
+}
+
+@media screen and (max-width: 900px) {
+
+  .modal {
+    &__content {
+      margin: 20px;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .profileForm {
+    flex-direction: column;
+    min-width: 300px;
+
+    &__imgBg {
+      width: 100%;
+      height: 150px;
+      border-top-right-radius: $radius;
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: 0;
+    }
+
+    &__imgBlank {
+      width: 100px;
+      height: 100px;
+    }
+
+    &__name {
+      width: 320px;
+    }
+
+    &__address div {
+      flex-direction: column;
+      gap: 5px;
+    }
+    &__address input {
+      width: 200px;
+    }
+
+    &__Btn {
+      width: 30px;
+      height: 30px;
+      margin-left: 20px;
+    }
+  }
 }
 
 
