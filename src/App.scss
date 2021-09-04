@@ -110,10 +110,11 @@ $basicWidth: 640px;
   }
 
   &__edit {
-    position: relative;
+    position: absolute;
     width: 25px;
     height: 25px;
     left: 20px;
+    bottom: 220px;
     cursor: pointer;
     order: 1;
   }
@@ -264,6 +265,11 @@ $basicWidth: 640px;
       border-top-right-radius: $radius;
       border-top-left-radius: $radius;
       border-bottom-left-radius: 0;
+    }
+
+    &__edit {
+      left: 310px;
+      bottom: 530px;
     }
   }
   .form {
