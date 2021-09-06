@@ -97,11 +97,12 @@ $basicWidth: 640px;
   &__companyInfo {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 40px;
   }
 
   &__companyInfo img {
-    padding-right: 10px;
   }
 
   &__companyTitle {
@@ -111,11 +112,8 @@ $basicWidth: 640px;
   }
 
   &__edit {
-    position: absolute;
     width: 25px;
     height: 25px;
-    left: 20px;
-    bottom: 220px;
     cursor: pointer;
     order: 1;
   }
@@ -271,6 +269,10 @@ $basicWidth: 640px;
     &__edit {
       left: 310px;
       bottom: 530px;
+    }
+
+    &__companyInfo img {
+      margin-right: 5px;
     }
   }
   .form {

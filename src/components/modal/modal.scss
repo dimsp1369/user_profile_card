@@ -58,6 +58,13 @@ input {
     align-items: center;
   }
 
+  &__imgBg>input {
+    display: none;
+    visibility:hidden;
+    width:0;
+    height:0
+  }
+
   &__img {
     border-radius: 50%;
     font-family: 'DM Serif Display', serif;
@@ -178,20 +185,13 @@ input {
       border-bottom-left-radius: 0;
     }
 
-    &__imgBd>input {
-      display: none;
-      visibility:hidden;
-      width:0;
-      height:0
-    }
-
     &__imgBlank {
       width: 100px;
       height: 100px;
     }
 
     &__name {
-      width: 320px;
+      width: 300px;
     }
 
     &__address div {
@@ -206,6 +206,10 @@ input {
       width: 30px;
       height: 30px;
       margin-left: 20px;
+    }
+
+    &__companyTitle>input {
+      width: 150px;
     }
   }
 }

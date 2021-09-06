@@ -26,9 +26,7 @@ const UserProfileCard = (props) => {
             <div className="card__imgBg">
                 {image.length <= 0 ? <Avatar color="#b67d94" name={name} round="50%" className="card__avatar"/> :
                     <img src={image} alt="userPhoto" className="card__img"/>}
-                <img src={Edit} className="card__edit"
-                     onClick={() => dispatch(openForm(true, true, props.initialValue))}
-                     alt='edit'/>
+
             </div>
             <div className="card__body">
                 <div className="card__name">
@@ -58,6 +56,9 @@ const UserProfileCard = (props) => {
                         <h4>{companyName}</h4>
                         <h4>{companyPhrase}</h4>
                     </div>
+                    <img src={Edit} className="card__edit"
+                         onClick={() => dispatch(openForm(true, true, props.initialValue))}
+                         alt='edit'/>
                 </div>
             </div>
         </div>
