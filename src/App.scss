@@ -8,6 +8,7 @@
 }
 
 $radius: 10px;
+$basicBgWidth: 260px;
 $basicHeight: 260px;
 $basicWidth: 640px;
 
@@ -26,8 +27,8 @@ $basicWidth: 640px;
   box-shadow: 0 0 10px 5px lightgray;
 
   &__imgBg {
-    width: $basicHeight;
-    height: $basicHeight;
+    min-width: $basicBgWidth;
+    min-height: $basicHeight;
     background: linear-gradient(135deg, #F395BA 0%, #FED182 100%);
     border-bottom-left-radius: $radius;
     border-top-left-radius: $radius;

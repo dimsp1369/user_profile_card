@@ -178,6 +178,13 @@ input {
       border-bottom-left-radius: 0;
     }
 
+    &__imgBd>input {
+      display: none;
+      visibility:hidden;
+      width:0;
+      height:0
+    }
+
     &__imgBlank {
       width: 100px;
       height: 100px;
