@@ -7,22 +7,19 @@ import Pagination from "./components/utils/pagination";
 import {connect, useDispatch} from "react-redux";
 import {getUser} from "./redux/actions/asyncActions";
 import Loader from "./components/utils/Loader";
+import {paginate} from "./redux/actions/actions";
 
 const App = (props) => {
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
-    const [currentPage, setCurrentPage] = useState(1)
-    const [cardPerPage] = useState(15)
 
     useEffect(() => {
         dispatch(getUser(setIsLoading))
     }, [dispatch])
 
-    const indexOfLastCard = currentPage * cardPerPage;
-    const indexOfFirstCard = indexOfLastCard - cardPerPage;
-    const currentCards = props.users.slice(indexOfFirstCard, indexOfLastCard)
-
-    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    useEffect(() => {
+        dispatch(paginate())
+    }, [dispatch, props.users])
 
     if (isLoading) return <Loader/>
 
@@ -30,18 +27,20 @@ const App = (props) => {
         <>
             <AddBtn/>
             <div className="wrapper">
-                {currentCards.map((user, index) => <UserProfileCard key={uuidv4()} initialValue={user}
+                {props.currentCards.map((card, index) => <UserProfileCard key={uuidv4()} initialValue={card}
                                                                     index={index}/>)}
             </div>
+            <Pagination/>
             {props.isFormOpen && <ModalWrapper/>}
-            <Pagination cardPerPage={cardPerPage} paginate={paginate}/>
+
         </>
     );
 };
 const mapStateToProps = (state) => {
     return {
-        users: state.profileReducer.users,
-        isFormOpen: state.profileReducer.isFormOpen
+        currentCards: state.profileReducer.pagination.currentCards,
+        isFormOpen: state.profileReducer.isFormOpen,
+        users: state.profileReducer.users
     }
 }
 

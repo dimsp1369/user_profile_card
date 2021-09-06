@@ -1,4 +1,4 @@
-import {CREATE_PROFILE, OPEN_FORM, UPDATE_PROFILE} from "../types";
+import {CREATE_PROFILE, CURRENT_PAGE, OPEN_FORM, PAGINATE, UPDATE_PROFILE} from "../types";
 
 export const openForm = (openBool, updateBool = false, data = {}) => ({
     type: OPEN_FORM,
@@ -13,4 +13,10 @@ export const createProfile = (user) => ({
 export const updateProfile = (data, id) => ({
     type: UPDATE_PROFILE,
     payload: {data, id}
+})
+
+export const paginate = () => ({type: PAGINATE})
+export const openCurrentPage = (number) => ({
+    type: CURRENT_PAGE,
+    payload: number
 })

@@ -1,19 +1,16 @@
 import React from 'react';
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import {v4 as uuidv4} from "uuid";
+import {openCurrentPage} from "../../redux/actions/actions";
 
-const Pagination = ({cardPerPage, users, paginate}) => {
-    const pageNumbers = []
-    for (let i = 1; i <= Math.ceil(users.length / cardPerPage); i++) {
-        pageNumbers.push(i)
-    }
-
+const Pagination = (props) => {
+    const dispatch = useDispatch()
 
     return (
         <div className="pagination">
-            {pageNumbers.map(number => (
+            {props.pageNumber.map(number => (
                 <span key={uuidv4()}>
-                    <a onClick={() => paginate(number)} href="!#" className="pagination__numbers">{number}</a></span>
+                    <a onClick={() => dispatch(openCurrentPage(number))} href="!#" className="pagination__numbers">{number}</a></span>
             ))}
         </div>
     );
@@ -21,7 +18,7 @@ const Pagination = ({cardPerPage, users, paginate}) => {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.profileReducer.users,
+        pageNumber: state.profileReducer.pagination.pageNumber,
     }
 }
 
