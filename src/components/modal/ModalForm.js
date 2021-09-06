@@ -16,7 +16,7 @@ const ModalForm = (props) => {
     const id = get(props, 'currentUser.id', uuidv4())
 
     const onSubmit = (data) => {
-        !props.isUpdate ? dispatch(createProfile(data)) : dispatch(updateProfile(data, id))
+        !props.isUpdate ? dispatch(createProfile({...data, id: uuidv4()})) : dispatch(updateProfile(data, id))
     }
 
     const name = get(props, 'currentUser.name', '')
