@@ -12,7 +12,7 @@ import {useForm} from "react-hook-form";
 
 const ModalForm = (props) => {
     const dispatch = useDispatch()
-    const {register, handleSubmit} = useForm()
+    const {register, formState: {errors}, handleSubmit} = useForm()
     const id = get(props, 'currentUser.id', uuidv4())
 
     const onSubmit = (data) => {
@@ -34,12 +34,13 @@ const ModalForm = (props) => {
         <Modal>
             <form onSubmit={handleSubmit(onSubmit)} className="profileForm">
                 <div className="profileForm__imgBg">
-                        {name.length <= 0 ? <img src={blankAva} alt="" className="profileForm__imgBlank"/> :
-                            <Avatar color="#b67d94" name={name} round="50%" className="profileForm__img"/>}
+                    {name.length <= 0 ? <img src={blankAva} alt="" className="profileForm__imgBlank"/> :
+                        <Avatar color="#b67d94" name={name} round="50%" className="profileForm__img"/>}
                 </div>
                 <div className="profileForm__body">
                     <input className="profileForm__name" type="text" placeholder="name"
-                           defaultValue={name} {...register("name")}/>
+                           defaultValue={name} {...register("name", {required: true})}/>
+                    {errors.name?.type === 'required' && <p>Name is required</p>}
                     <div className="profileForm__contacts">
                         <div className="profileForm__email">
                             <img src={eMail} alt=""/>
