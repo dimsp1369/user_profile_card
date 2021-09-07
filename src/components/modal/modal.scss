@@ -58,13 +58,6 @@ input {
     align-items: center;
   }
 
-  &__imgBg>input {
-    display: none;
-    visibility:hidden;
-    width:0;
-    height:0
-  }
-
   &__img {
     border-radius: 50%;
     font-family: 'DM Serif Display', serif;

@@ -34,11 +34,8 @@ const ModalForm = (props) => {
         <Modal>
             <form onSubmit={handleSubmit(onSubmit)} className="profileForm">
                 <div className="profileForm__imgBg">
-                    <lable for="input-upload">
                         {name.length <= 0 ? <img src={blankAva} alt="" className="profileForm__imgBlank"/> :
                             <Avatar color="#b67d94" name={name} round="50%" className="profileForm__img"/>}
-                    </lable>
-                    <input type="file" id="input-upload"/>
                 </div>
                 <div className="profileForm__body">
                     <input className="profileForm__name" type="text" placeholder="name"
